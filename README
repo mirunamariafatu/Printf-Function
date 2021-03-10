@@ -1,0 +1,36 @@
+Fatu Miruna-Maria
+321CA
+
+Tema 1 - Printf
+In rezolvarea temei am folosit urmatoarele functii:
+
+Functia convert_to_string
+
+	Rol:			-> transforma numarul primit ca parametru in sir de caractere (str)
+
+	Variabile: 		-> vectorul nr - stocheaza restul impartirii numarului dat ca parametru la baza dorita(10 sau 16)
+					-> base - initializata cu 10, devine 16 in cazul in care numarul este in hex
+	
+	-> Construiesc vectorul nr impartind la 10 si salvand de fiecare data restul pe pozitia i++.
+	-> In continuare, folosind vectorul anterior creat, de pe ultima pozitie a acestuia incep sa construiesc
+	string-ul str, decrementand pozitia i- - pana cand se ajunge la nr[0].
+	->In cazul in care numarul trebuie transformat in hexazecimal, conversia se va face folosind
+	literele corespunzatoare numerelor de la 10 la 15.
+	->In final, este returnat string-ul creat str 
+
+Functia principala iocla_printf
+
+	Variabile: 		-> vectorul result - stocheaza sirul de caractere final
+					-> idx - indexul cu care vom itera prin 'format'
+
+	-> Initializarea vectorului result cu 0
+	-> Parcurg string-ul 'format' verificand daca urmeaza un tip de date (precedat de caracterul '%')
+	sau doar caractere (caz default).
+	-> Daca a fost identificat un tip de date,  in cazul in care este un string sau char, acesta va fi 
+	concatenat la 'result', insa daca tipul de date este int/hex/unsigned, se va apela functia
+	convert_to_string. Aceasta va intoarce sirul de caractere corespunzator formatului si va fi
+	concatenat la string-ul final 'result'.
+	-> La fiecare iteratie, este incrementat indexul 'idx', ciclul oprindu-se atunci cand tot string-ul
+	'format' a fost parcurs.
+	-> In final, am folosit functia write_stdout pentru a returna lungimea string-ului  'result' si a afisa
+	continutul acestuia 
